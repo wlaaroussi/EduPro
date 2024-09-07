@@ -1,0 +1,438 @@
+<html><head><base href="https://fourou-shop.websim.ai/recherche">
+<title>EduPro - Recherche</title>
+<style>
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #FFC107;
+  --accent-color: #2196F3;
+  --text-color: #333333;
+  --background-color: #F5F5F5;
+  --gradient-start: #6A11CB;
+  --gradient-end: #2575FC;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu-item {
+  position: relative;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.menu-item:hover {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  min-width: 150px;
+  border-radius: 5px;
+  display: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu-item:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+.search-section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-section h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.search-btn {
+  padding: 0.75rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #1976D2;
+}
+
+.search-results {
+  margin-top: 2rem;
+}
+
+.result-item {
+  background-color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-item h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.result-item p {
+  margin-bottom: 0.5rem;
+}
+
+.result-item .meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem 0;
+  margin-top: 2rem;
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 1rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .search-filters {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">EduPro</div>
+      <div class="menu">
+        <div class="menu-item">
+          <a href="/">Accueil</a>
+        </div>
+        <div class="menu-item">
+          Niveaux
+          <div class="dropdown">
+            <a href="/niveaux/1bac">1ère BAC</a>
+            <a href="/niveaux/2bac">2ème BAC</a>
+            <a href="/niveaux/encg">ENCG</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          Catégories
+          <div class="dropdown">
+            <a href="/categories/cours">Cours</a>
+            <a href="/categories/exercices">Exercices</a>
+            <a href="/categories/corriges">Corrigés</a>
+            <a href="/categories/examens">Examens</a>
+            <a href="/categories/videos">Vidéos</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/recherche">Recherche</a>
+        </div>
+        <div class="menu-item" id="userMenu">
+          <a href="/connexion">Connexion</a>
+        </div>
+      </div>
+      <a href="/abonnement" class="subscription-btn">Abonnement</a>
+      <div class="mobile-menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="search-section">
+      <h1>Recherche de Contenu</h1>
+      <form class="search-form" id="searchForm">
+        <input type="text" class="search-input" placeholder="Entrez vos mots-clés..." id="searchInput">
+        <div class="search-filters">
+          <div class="filter-group">
+            <label for="niveau">Niveau</label>
+            <select id="niveau">
+              <option value="">Tous les niveaux</option>
+              <option value="1bac">1ère BAC</option>
+              <option value="2bac">2ème BAC</option>
+              <option value="encg">ENCG</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="categorie">Catégorie</label>
+            <select id="categorie">
+              <option value="">Toutes les catégories</option>
+              <option value="cours">Cours</option>
+              <option value="exercices">Exercices</option>
+              <option value="corriges">Corrigés</option>
+              <option value="examens">Examens</option>
+              <option value="videos">Vidéos</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="matiere">Matière</label>
+            <select id="matiere">
+              <option value="">Toutes les matières</option>
+              <option value="maths">Mathématiques</option>
+              <option value="physique">Physique</option>
+              <option value="svt">SVT</option>
+              <option value="francais">Français</option>
+              <option value="anglais">Anglais</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="search-btn">Rechercher</button>
+      </form>
+      <div class="search-results" id="searchResults">
+        <!-- Les résultats de recherche seront insérés ici dynamiquement -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h3>À propos d'EduPro</h3>
+        <p>EduPro est votre plateforme d'apprentissage en ligne pour réussir vos études et atteindre l'excellence académique.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liens Utiles</h3>
+        <ul>
+          <li><a href="/conditions">Conditions d'utilisation</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="https://facebook.com/eduPro" target="_blank">📘</a>
+          <a href="https://instagram.com/edu_pro" target="_blank">📷</a>
+          <a href="https://twitter.com/eduPro" target="_blank">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simulated search results
+    const mockResults = [
+      { title: "Cours de Mathématiques - Fonctions", category: "cours", level: "1bac", subject: "maths" },
+      { title: "Exercices corrigés de Physique - Mécanique", category: "exercices", level: "2bac", subject: "physique" },
+      { title: "Vidéo explicative - La photosynthèse", category: "videos", level: "1bac", subject: "svt" },
+      { title: "Examen blanc - Français", category: "examens", level: "2bac", subject: "francais" },
+      { title: "Cours d'Anglais - Present Perfect", category: "cours", level: "1bac", subject: "anglais" }
+    ];
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const niveau = document.getElementById('niveau').value;
+      const categorie = document.getElementById('categorie').value;
+      const matiere = document.getElementById('matiere').value;
+
+      const filteredResults = mockResults.filter(result => {
+        return (searchTerm === '' || result.title.toLowerCase().includes(searchTerm)) &&
+               (niveau === '' || result.level === niveau) &&
+               (categorie === '' || result.category === categorie) &&
+               (matiere === '' || result.subject === matiere);
+      });
+
+      displayResults(filteredResults);
+    });
+
+    function displayResults(results) {
+      const resultsContainer = document.getElementById('searchResults');
+      resultsContainer.innerHTML = '';
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>Aucun résultat trouvé.</p>';
+        return;
+      }
+
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'result-item';
+        resultItem.innerHTML = `
+          <h3>${result.title}</h3>
+          <p class="meta">Catégorie: ${result.category} | Niveau: ${result.level} | Matière: ${result.subject}</p>
+        `;
+        resultsContainer.appendChild(resultItem);
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // User authentication simulation
+    let isLoggedIn = false;
+
+    function updateUserMenu() {
+      const userMenu = document.getElementById('userMenu');
+      if (isLoggedIn) {
+        userMenu.innerHTML = '<a href="/profil">Mon Profil</a>';
+      } else {
+        userMenu.innerHTML = '<a href="/connexion">Connexion</a>';
+      }
+    }
+
+    // Call this function to update the menu when the user logs in or out
+    updateUserMenu();
+  </script>
+</body></html>
