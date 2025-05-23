@@ -1,0 +1,184 @@
+<html lang="fr"><head><base href="https://fourou-shop.websim.ai/recherche">
+<title>EduPro - Recherche</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">EduPro</div>
+      <div class="menu">
+        <div class="menu-item">
+          <a href="/">Accueil</a>
+        </div>
+        <div class="menu-item">
+          Niveaux
+          <div class="dropdown">
+            <a href="/niveaux/1bac">1ère BAC</a>
+            <a href="/niveaux/2bac">2ème BAC</a>
+            <a href="/niveaux/encg">ENCG</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          Catégories
+          <div class="dropdown">
+            <a href="/categories/cours">Cours</a>
+            <a href="/categories/exercices">Exercices</a>
+            <a href="/categories/corriges">Corrigés</a>
+            <a href="/categories/examens">Examens</a>
+            <a href="/categories/videos">Vidéos</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/recherche">Recherche</a>
+        </div>
+        <div class="menu-item" id="userMenu">
+          <a href="/connexion">Connexion</a>
+        </div>
+      </div>
+      <a href="/abonnement" class="subscription-btn">Abonnement</a>
+      <div class="mobile-menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="search-section">
+      <h1>Recherche de Contenu</h1>
+      <form class="search-form" id="searchForm">
+        <input type="text" class="search-input" placeholder="Entrez vos mots-clés..." id="searchInput">
+        <div class="search-filters">
+          <div class="filter-group">
+            <label for="niveau">Niveau</label>
+            <select id="niveau">
+              <option value="">Tous les niveaux</option>
+              <option value="1bac">1ère BAC</option>
+              <option value="2bac">2ème BAC</option>
+              <option value="encg">ENCG</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="categorie">Catégorie</label>
+            <select id="categorie">
+              <option value="">Toutes les catégories</option>
+              <option value="cours">Cours</option>
+              <option value="exercices">Exercices</option>
+              <option value="corriges">Corrigés</option>
+              <option value="examens">Examens</option>
+              <option value="videos">Vidéos</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="matiere">Matière</label>
+            <select id="matiere">
+              <option value="">Toutes les matières</option>
+              <option value="maths">Mathématiques</option>
+              <option value="physique">Physique</option>
+              <option value="svt">SVT</option>
+              <option value="francais">Français</option>
+              <option value="anglais">Anglais</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="search-btn">Rechercher</button>
+      </form>
+      <div class="search-results" id="searchResults">
+        <!-- Les résultats de recherche seront insérés ici dynamiquement -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h3>À propos d'EduPro</h3>
+        <p>EduPro est votre plateforme d'apprentissage en ligne pour réussir vos études et atteindre l'excellence académique.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liens Utiles</h3>
+        <ul>
+          <li><a href="/conditions">Conditions d'utilisation</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="https://facebook.com/eduPro" target="_blank">📘</a>
+          <a href="https://instagram.com/edu_pro" target="_blank">📷</a>
+          <a href="https://twitter.com/eduPro" target="_blank">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simulated search results
+    const mockResults = [
+      { title: "Cours de Mathématiques - Fonctions", category: "cours", level: "1bac", subject: "maths" },
+      { title: "Exercices corrigés de Physique - Mécanique", category: "exercices", level: "2bac", subject: "physique" },
+      { title: "Vidéo explicative - La photosynthèse", category: "videos", level: "1bac", subject: "svt" },
+      { title: "Examen blanc - Français", category: "examens", level: "2bac", subject: "francais" },
+      { title: "Cours d'Anglais - Present Perfect", category: "cours", level: "1bac", subject: "anglais" }
+    ];
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const niveau = document.getElementById('niveau').value;
+      const categorie = document.getElementById('categorie').value;
+      const matiere = document.getElementById('matiere').value;
+
+      const filteredResults = mockResults.filter(result => {
+        return (searchTerm === '' || result.title.toLowerCase().includes(searchTerm)) &&
+               (niveau === '' || result.level === niveau) &&
+               (categorie === '' || result.category === categorie) &&
+               (matiere === '' || result.subject === matiere);
+      });
+
+      displayResults(filteredResults);
+    });
+
+    function displayResults(results) {
+      const resultsContainer = document.getElementById('searchResults');
+      resultsContainer.innerHTML = '';
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>Aucun résultat trouvé.</p>';
+        return;
+      }
+
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'result-item';
+        resultItem.innerHTML = `
+          <h3>${result.title}</h3>
+          <p class="meta">Catégorie: ${result.category} | Niveau: ${result.level} | Matière: ${result.subject}</p>
+        `;
+        resultsContainer.appendChild(resultItem);
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active'); // Updated line
+    });
+
+    // User authentication simulation
+    let isLoggedIn = false;
+
+    function updateUserMenu() {
+      const userMenu = document.getElementById('userMenu');
+      if (isLoggedIn) {
+        userMenu.innerHTML = '<a href="/profil">Mon Profil</a>';
+      } else {
+        userMenu.innerHTML = '<a href="/connexion">Connexion</a>';
+      }
+    }
+
+    // Call this function to update the menu when the user logs in or out
+    updateUserMenu();
+  </script>
+</body></html>

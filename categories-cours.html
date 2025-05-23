@@ -1,0 +1,165 @@
+<html lang="fr"><head><base href="https://fourou-shop.websim.ai/categories/cours">
+<title>EduPro - Cours</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">EduPro</div>
+      <div class="menu">
+        <div class="menu-item">
+          <a href="/">Accueil</a>
+        </div>
+        <div class="menu-item">
+          Niveaux
+          <div class="dropdown">
+            <a href="/niveaux/1bac">1ère BAC</a>
+            <a href="/niveaux/2bac">2ème BAC</a>
+            <a href="/niveaux/encg">ENCG</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          Catégories
+          <div class="dropdown">
+            <a href="/categories/cours">Cours</a>
+            <a href="/categories/exercices">Exercices</a>
+            <a href="/categories/corriges">Corrigés</a>
+            <a href="/categories/examens">Examens</a>
+            <a href="/categories/videos">Vidéos</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/recherche">Recherche</a>
+        </div>
+        <div class="menu-item" id="userMenu">
+          <a href="/connexion">Connexion</a>
+        </div>
+      </div>
+      <a href="/abonnement" class="subscription-btn">Abonnement</a>
+      <div class="mobile-menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="courses-hero">
+      <h1>Nos Cours</h1>
+      <p>Découvrez notre sélection de cours pour tous les niveaux et matières.</p>
+    </section>
+
+    <section class="course-list">
+      <div class="course-item">
+        <h3>Mathématiques</h3>
+        <p>Approfondissez vos connaissances en algèbre, géométrie et analyse avec nos cours de mathématiques adaptés à tous les niveaux.</p>
+        <div class="course-meta">
+          <span class="course-level">Tous niveaux</span>
+          <a href="/cours/mathematiques" class="btn">Voir le cours</a>
+        </div>
+      </div>
+      <div class="course-item">
+        <h3>Physique-Chimie</h3>
+        <p>Explorez les lois de la physique et les réactions chimiques à travers des cours interactifs et des expériences virtuelles.</p>
+        <div class="course-meta">
+          <span class="course-level">1ère et 2ème BAC</span>
+          <a href="/cours/physique-chimie" class="btn">Voir le cours</a>
+        </div>
+      </div>
+      <div class="course-item">
+        <h3>Sciences de la Vie et de la Terre</h3>
+        <p>Découvrez les mystères du vivant et de notre planète avec des cours illustrés et des animations pédagogiques.</p>
+        <div class="course-meta">
+          <span class="course-level">1ère et 2ème BAC</span>
+          <a href="/cours/svt" class="btn">Voir le cours</a>
+        </div>
+      </div>
+      <div class="course-item">
+        <h3>Français</h3>
+        <p>Perfectionnez votre maîtrise de la langue française à travers l'étude de la littérature, de la grammaire et de l'expression écrite.</p>
+        <div class="course-meta">
+          <span class="course-level">Tous niveaux</span>
+          <a href="/cours/francais" class="btn">Voir le cours</a>
+        </div>
+      </div>
+      <div class="course-item">
+        <h3>Histoire-Géographie</h3>
+        <p>Voyagez à travers le temps et l'espace avec nos cours d'histoire et de géographie, enrichis de cartes interactives et de chronologies.</p>
+        <div class="course-meta">
+          <span class="course-level">1ère et 2ème BAC</span>
+          <a href="/cours/histoire-geographie" class="btn">Voir le cours</a>
+        </div>
+      </div>
+      <div class="course-item">
+        <h3>Économie</h3>
+        <p>Comprenez les mécanismes économiques et leur impact sur la société avec nos cours adaptés aux futurs étudiants en ENCG.</p>
+        <div class="course-meta">
+          <span class="course-level">ENCG</span>
+          <a href="/cours/economie" class="btn">Voir le cours</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h3>À propos d'EduPro</h3>
+        <p>EduPro est votre plateforme d'apprentissage en ligne pour réussir vos études et atteindre l'excellence académique.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liens Utiles</h3>
+        <ul>
+          <li><a href="/conditions">Conditions d'utilisation</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="https://facebook.com/eduPro" target="_blank">📘</a>
+          <a href="https://instagram.com/edu_pro" target="_blank">📷</a>
+          <a href="https://twitter.com/eduPro" target="_blank">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active'); // Updated line
+    });
+
+    // User authentication simulation
+    let isLoggedIn = false;
+
+    function updateUserMenu() {
+      const userMenu = document.getElementById('userMenu');
+      if (isLoggedIn) {
+        userMenu.innerHTML = '<a href="/profil">Mon Profil</a>';
+      } else {
+        userMenu.innerHTML = '<a href="/connexion">Connexion</a>';
+      }
+    }
+
+    // Call this function to update the menu when the user logs in or out
+    updateUserMenu();
+
+    // Simulated login function (for demonstration purposes)
+    function simulateLogin() {
+      isLoggedIn = true;
+      updateUserMenu();
+      alert('Vous êtes maintenant connecté !');
+    }
+
+    // Add this line to simulate login when clicking on the login link
+    document.querySelector('#userMenu a').addEventListener('click', (e) => {
+      if (!isLoggedIn) {
+        e.preventDefault();
+        simulateLogin();
+      }
+    });
+  </script>
+</body></html>
