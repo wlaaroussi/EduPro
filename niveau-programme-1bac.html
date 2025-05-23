@@ -1,0 +1,143 @@
+<html lang="fr"><head><base href="https://fourou-shop.websim.ai/niveaux/1bac">
+<title>EduPro - 1ère BAC</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">EduPro</div>
+      <div class="menu">
+        <div class="menu-item">
+          <a href="/">Accueil</a>
+        </div>
+        <div class="menu-item">
+          Niveaux
+          <div class="dropdown">
+            <a href="/niveaux/1bac">1ère BAC</a>
+            <a href="/niveaux/2bac">2ème BAC</a>
+            <a href="/niveaux/encg">ENCG</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          Catégories
+          <div class="dropdown">
+            <a href="/categories/cours">Cours</a>
+            <a href="/categories/exercices">Exercices</a>
+            <a href="/categories/corriges">Corrigés</a>
+            <a href="/categories/examens">Examens</a>
+            <a href="/categories/videos">Vidéos</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/recherche">Recherche</a>
+        </div>
+        <div class="menu-item" id="userMenu">
+          <a href="/connexion">Connexion</a>
+        </div>
+      </div>
+      <a href="/abonnement" class="subscription-btn">Abonnement</a>
+      <div class="mobile-menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Programme 1ère BAC</h1>
+    <div class="subjects-grid">
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/mathematiques'">
+        <div class="subject-icon">🧮</div>
+        <h3>Mathématiques</h3>
+        <p>Algèbre, géométrie, analyse et probabilités</p>
+      </div>
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/physique-chimie'">
+        <div class="subject-icon">⚗️</div>
+        <h3>Physique-Chimie</h3>
+        <p>Mécanique, électricité, chimie organique et minérale</p>
+      </div>
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/svt'">
+        <div class="subject-icon">🧬</div>
+        <h3>SVT</h3>
+        <p>Biologie cellulaire, géologie, écologie</p>
+      </div>
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/francais'">
+        <div class="subject-icon">📚</div>
+        <h3>Français</h3>
+        <p>Littérature, grammaire, expression écrite et orale</p>
+      </div>
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/histoire-geographie'">
+        <div class="subject-icon">🌍</div>
+        <h3>Histoire-Géographie</h3>
+        <p>Histoire du Maroc et du monde, géographie humaine et physique</p>
+      </div>
+      <div class="subject-card" onclick="location.href='/niveaux/1bac/anglais'">
+        <div class="subject-icon">🇬🇧</div>
+        <h3>Anglais</h3>
+        <p>Compréhension et expression écrite et orale</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h3>À propos d'EduPro</h3>
+        <p>EduPro est votre plateforme d'apprentissage en ligne pour réussir vos études et atteindre l'excellence académique.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liens Utiles</h3>
+        <ul>
+          <li><a href="/conditions">Conditions d'utilisation</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="https://facebook.com/eduPro" target="_blank">📘</a>
+          <a href="https://instagram.com/edu_pro" target="_blank">📷</a>
+          <a href="https://twitter.com/eduPro" target="_blank">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active'); // Updated line
+    });
+
+    // User authentication simulation
+    let isLoggedIn = false;
+
+    function updateUserMenu() {
+      const userMenu = document.getElementById('userMenu');
+      if (isLoggedIn) {
+        userMenu.innerHTML = '<a href="/profil">Mon Profil</a>';
+      } else {
+        userMenu.innerHTML = '<a href="/connexion">Connexion</a>';
+      }
+    }
+
+    // Call this function to update the menu when the user logs in or out
+    updateUserMenu();
+
+    // Simulated login function (for demonstration purposes)
+    function simulateLogin() {
+      isLoggedIn = true;
+      updateUserMenu();
+      alert('Vous êtes maintenant connecté !');
+    }
+
+    // Add this line to simulate login when clicking on the login link
+    document.querySelector('#userMenu a').addEventListener('click', (e) => {
+      if (!isLoggedIn) {
+        e.preventDefault();
+        simulateLogin();
+      }
+    });
+  </script>
+</body></html>
